@@ -36,6 +36,8 @@ else
 fi
 
 # 添加计划任务
+echo -e "当前用户为 `whoami`！"
+
 rm -rf /tmp/cron.`whoami`
 echo "${CRON_COMMAND}" >> /tmp/cron.`whoami`
 crontab -u `whoami` /tmp/cron.`whoami`
