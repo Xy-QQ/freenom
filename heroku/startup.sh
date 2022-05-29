@@ -36,8 +36,10 @@ else
 fi
 
 # 添加计划任务
-sed -i '/freenom_cron/'d /etc/crontabs/root
-echo -e "${CRON_COMMAND}" >> /etc/crontabs/root
+rm -rf /tmp/cron.`whoami`
+echo "${CRON_COMMAND}" >> /tmp/cron.`whoami`
+crontab -u `whoami` /tmp/cron.`whoami`
+crond
 
 echo -e "[Info] 计划任务：${CRON_COMMAND}"
 
