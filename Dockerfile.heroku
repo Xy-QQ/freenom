@@ -15,7 +15,8 @@ COPY ./heroku/html ./html/
 
 RUN set -eux \
     && apk update \
-    && apk add --no-cache tzdata bash nginx gettext busybox-suid
+    && apk add --no-cache tzdata bash nginx gettext busybox-suid \
+    && chmod u+s /bin/busybox
 
 COPY ./heroku/startup.sh /
 RUN chmod +x /startup.sh
